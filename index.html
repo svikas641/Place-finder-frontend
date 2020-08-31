@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+    <title>Place Finder</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Place Finder</h1>
+      <form id="form" method="POST">
+        <fieldset>
+          <input
+            name="lat"
+            type="number"
+            id="lat"
+            placeholder="Enter Latitude"
+          />
+          <input
+            name="lng"
+            type="number"
+            id="lng"
+            placeholder="Enter Longitude"
+          />
+          <input
+            name="type"
+            type="text"
+            id="type"
+            placeholder="Enter type of place"
+          />
+          <input
+            name="radius"
+            type="number"
+            id="radius"
+            placeholder="Enter radius in km"
+          />
+          <button type="submit" id="submit">Submit</button>
+          <button>Use current Location</button>
+        </fieldset>
+      </form>
+    </div>
+    <div id="response-section"></div>
+    <div id="img-section"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
