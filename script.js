@@ -14,8 +14,10 @@ async function data(event) {
 
   const lat = document.querySelector('#lat').value;
   const lng = document.querySelector('#lng').value;
-  const type = document.querySelector('#type').value;
+  let type = document.querySelector('#type').value;
   const radius = document.querySelector('#radius').value;
+
+  type = type.toLowerCase()
 
   const formData = { lat, lng, type, radius };
   const options = {
@@ -27,6 +29,7 @@ async function data(event) {
   }
   const response = await fetch(baseURL, options);
   const respData = await response.json()
+
   submitButton.textContent = 'Submit';
   let output = ``;
   respData.forEach(async element => {
