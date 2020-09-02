@@ -2,9 +2,34 @@ const submitButton = document.querySelector('#submit');
 const baseURL = `https://infinite-chamber-21931.herokuapp.com/data`;
 const responseSection = document.querySelector('#response-section');
 
+const locationButton = document.querySelector('#location');
+
 // this key is restricted
 const KEY = 'AIzaSyAu44VqU4eP5QFVUKg1DSSGc9yzXFZOHlI';
 const url = 'https://maps.googleapis.com/maps/api/place/photo';
+
+
+function success(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  document.querySelector('#lat').value = latitude;
+  document.querySelector('#lng').value = longitude;
+}
+
+function error() {
+ console.log('OOppppssssss!!!!');
+}
+
+function currentLocation(){
+  if (!navigator.geolocation) {
+    console.log('Some error in location');
+  } else {
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+}
+
+locationButton.addEventListener('click', currentLocation);
 
 async function data(event) {
 
@@ -12,8 +37,8 @@ async function data(event) {
 
   submitButton.textContent = 'Loading...';
 
-  const lat = document.querySelector('#lat').value;
-  const lng = document.querySelector('#lng').value;
+  lat = document.querySelector('#lat').value;
+  lng = document.querySelector('#lng').value;
   let type = document.querySelector('#type').value;
   const radius = document.querySelector('#radius').value;
 
@@ -46,5 +71,7 @@ async function data(event) {
   });
   responseSection.innerHTML = output;
 }
+
+
 
 submitButton.addEventListener('click', data);
